@@ -12,6 +12,6 @@ $(NAME): $(SRC)
 	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 fclean:
-	rm -rf $(@)
+	rm -rf $(NAME)
 
 re: fclean all
