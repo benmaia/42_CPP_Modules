@@ -1,4 +1,4 @@
-NAME = acounts
+NAME = accounts
 
 CC = c++
 
@@ -9,6 +9,9 @@ SRC = $(wildcard *.cpp)
 all: $(NAME)
 
 $(NAME): $(SRC)
-	$(CC) $(FLAGS) -I./ -c $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
+fclean:
+	rm -rf $(@)
 
+re: fclean all
