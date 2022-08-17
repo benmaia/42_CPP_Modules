@@ -17,24 +17,24 @@ void	PhoneBook::contact_Add(void)
 	str	tmp;
 	std::cout << "Enter the First Name ->   \e[1;35m";
 	std::cout << "\e[1;35m";
-	std::cin >> tmp;
+	std::getline(std::cin, tmp);
 	this->_contacts[_index % 8].add_FirstName(tmp);
 	std::cout << "\e[0;0mEnter the Last Name ->    \e[1;35m";
-	std::cin >> tmp;
+	std::getline(std::cin, tmp);
 	this->_contacts[_index % 8].add_LastName(tmp);
 	std::cout << "\e[0;0mEnter the Nick Name ->    \e[1;35m";
-	std::cin >> tmp;
+	std::getline(std::cin, tmp);
 	this->_contacts[_index % 8].add_NickName(tmp);
 	std::cout << "\e[0;0mEnter the Phone Number -> \e[1;35m";
-	std::cin >> tmp;
+	std::getline(std::cin, tmp);
 	this->_contacts[_index % 8].add_Phone_Nb(tmp);
 	std::cout << "\e[0;0mEnter the Dark Secret ->  \e[1;35m";
-	std::cin >> tmp;
+	std::getline(std::cin, tmp);
 	std::cout << "\e[0;0m";
 	this->_contacts[_index % 8].add_DarkSecret(tmp);
 	_index++;
 	std::cout << "\nEnter \e[1;35mOK\e[0;0m to confirm it!\n\e[1;35m" << std::endl;
-	std::cin >> tmp;
+	std::getline(std::cin, tmp);
 	std::cout << "\e[0;0m";
 	if (tmp == "OK")
 		return ;
@@ -67,7 +67,7 @@ void	PhoneBook::contact_Search(void)
 		i++;
 	}
 	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << "\nChoose one index number to view a contact!\n\e[1;35m" << std::endl;
+
 	std::cin >> choice;
 	std::cout << "\e[0;0m";
 	std::stringstream convert;

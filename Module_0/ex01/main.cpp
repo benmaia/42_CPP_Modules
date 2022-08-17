@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <string>
 
 void	print_menu(void)
 {
@@ -19,7 +20,7 @@ int main(void)
 		system("clear");
 		print_menu();
 		std::cout << "\e[1;35m";
-		std::cin >> prompt;
+		std::getline(std::cin, prompt);
 		std::cout << "\e[0;0m";
 		if (prompt == "EXIT")
 			p_Book.exit_program();
