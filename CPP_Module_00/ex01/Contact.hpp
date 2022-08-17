@@ -21,7 +21,8 @@ class Contact
 		void	add_NickName(str nick);
 		void	add_Phone_Nb(str phone_nb);
 		void	add_DarkSecret(str d_secret);
-		void	get_Info(int index);
+		void	get_Info(void);
+		void	get_Search(void);
 		Contact();
 		~Contact();
 };

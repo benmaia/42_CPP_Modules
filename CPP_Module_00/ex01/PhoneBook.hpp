@@ -3,6 +3,9 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+#include <cstdlib>
+#include <sstream>
+
 class PhoneBook
 {
 	private:
