@@ -14,6 +14,7 @@ class Contact
 		str	_nick;
 		str	_phone_nb;
 		str	_d_secret;
+		str	_search_info(str name);
 
 	public:
 		void	add_FirstName(str f_name);

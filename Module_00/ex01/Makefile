@@ -4,7 +4,7 @@ CC = c++
 
 SRC = $(wildcard *.cpp)
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -static-libsan -g
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -static-libasan -g
 
 all: $(NAME)
 

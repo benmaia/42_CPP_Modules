@@ -39,46 +39,35 @@ void	Contact::get_Info(void)
 	std::cout << "\e[0;0m";
 }
 
+str	Contact::_search_info(str name)
+{
+	str	tmp;
+
+	if (name.length() >= 10)
+	{
+		tmp = name.substr(0, 9);
+		tmp.append(".");
+	}
+	else
+	{
+		tmp = name;
+		while (tmp.length() < 10)
+			tmp.insert(0, " ");
+	}
+	return tmp;
+}
+
 void	Contact::get_Search()
 {
 	str	tmp;
-	if (this->_f_name.length() >= 10)
-	{
-		tmp = _f_name.substr(0, 9);
-		tmp.append(".");
-	}
-	else
-	{
-		tmp = this->_f_name;
-		while (tmp.length() < 10)
-			tmp.insert(0, " ");
-	}
+
+	tmp = Contact::_search_info(this->_f_name);
 	std::cout << tmp;
 	std::cout << "|";
-	if (this->_l_name.length() >= 10)
-	{
-		tmp = _l_name.substr(0, 9);
-		tmp.append(".");
-	}
-	else
-	{
-		tmp = this->_l_name;
-		while (tmp.length() < 10)
-			tmp.insert(0, " ");
-	}
+	tmp = Contact::_search_info(this->_l_name);
 	std::cout << tmp;
 	std::cout << "|";
-	if (this->_nick.length() >= 10)
-	{
-		tmp = _nick.substr(0, 9);
-		tmp.append(".");
-	}
-	else
-	{
-		tmp = this->_nick;
-		while (tmp.length() < 10)
-			tmp.insert(0, " ");
-	}
+	tmp = Contact::_search_info(this->_nick);
 	std::cout << "\e[1;35m";
 	std::cout << tmp;
 	std::cout << "\e[0;0m";
