@@ -73,7 +73,7 @@ void	Harl::complain(std::string level)
 			std::cout << std::endl;
 			(this->*comment[3].level)();
 			break ;
-		case 4:
+		default:
 			std::cout << "Please select one of the 4 levels" << std::endl;
 			std::cout << "1st -> DEBUG | 2nd -> INFO | 3rd -> WARNING | 4th -> ERROR" << std::endl;
 			exit(1);
