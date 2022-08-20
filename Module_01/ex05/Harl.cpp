@@ -2,13 +2,13 @@
 
 Harl::Harl()
 {
-	comment[0].comment = "debug";
+	comment[0].comment = "DEBUG";
 	comment[0].level = &Harl::debug;
-	comment[1].comment = "info";
+	comment[1].comment = "INFO";
 	comment[1].level = &Harl::info;
-	comment[2].comment = "warning";
+	comment[2].comment = "WARNING";
 	comment[2].level = &Harl::warning;
-	comment[3].comment = "error";
+	comment[3].comment = "ERROR";
 	comment[3].level = &Harl::error;
 }
 
