@@ -2,7 +2,7 @@ NAME = BraiiiiiiinnnzzzZ
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 SRC = $(wildcard *.cpp)
 
