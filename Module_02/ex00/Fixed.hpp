@@ -2,22 +2,21 @@
 # define FIXED_HPP
 
 #include <iostream>
-#include <string.h>
-
-typedef std::string	string;
+#include <string>
+#include <cmath>
 
 class Fixed
 {
 	private:
-		int					value;
 		static const int	bits = 8;
+		int					value;
 
 	public:
-		void	setRawBits(int const raw);
-		int	getRawBits(void) const;
+		int	getRawBits(void)const;
+		void	setRawBits(const int raw);
 		Fixed();
-		Fixed(const Fixed &c);
-		Fixed &operator=(const Fixed &c);
+		Fixed(const Fixed &original);
+		Fixed &operator=(const Fixed &original);
 		~Fixed();
 };
 
