@@ -1,15 +1,15 @@
-NAME = fixedInsert
+NAME = fixed
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+FLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address -g
 
 SRCS = $(wildcard *.cpp)
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) $(SRCS) -o $(@)
+	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
 	rm -f $(NAME)

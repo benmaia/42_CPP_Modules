@@ -2,31 +2,28 @@
 # define FIXED_HPP
 
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <cmath>
-
-typedef std::string	string;
 
 class Fixed
 {
 	private:
-		int					value;
 		static const int	bits = 8;
+		int					value;
 
 	public:
-		void	setRawBits(int const raw);
-		int	getRawBits(void) const;
-		float	toFloat(void) const;
-		int	toInt(void) const;
+		int	getRawBits(void)const;
+		void	setRawBits(const int raw);
+		float	toFloat(void)const;
+		int	toInt(void)const;
 		Fixed();
-		Fixed(const Fixed &c);
-		Fixed(const int);
-		Fixed(const float);
-		Fixed &operator=(const Fixed &c);
-
+		Fixed(const Fixed &original);
+		Fixed(const int	interNb);
+		Fixed(const float	fractNb);
+		Fixed &operator=(const Fixed &original);
 		~Fixed();
 };
 
-std::ostream &operator<< (std::ostream &stream, const Fixed &op);
+std::ostream &operator<<(std::ostream &op, const Fixed &original);
 
 #endif
