@@ -10,7 +10,7 @@ FragTrap::FragTrap()
 	std::cout << "FragTrap: " << getName() << " default constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	setType("FragTrap");
 	setName(name);
@@ -20,7 +20,7 @@ FragTrap::FragTrap(std::string name)
 	std::cout << "FragTrap: " << getName() << " created!" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &original)
+FragTrap::FragTrap(const FragTrap &original) : ClapTrap(original)
 {
 	setType(original._type);
 	setName(original._name);

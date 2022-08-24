@@ -9,12 +9,11 @@ DiamondTrap::DiamondTrap()
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap()
 {
 	FragTrap f(name);
 	ScavTrap s(name);
 	this->_name = name;
-	ClapTrap::_name = (name + "_clap_name");
 	this->_hitPoints = f.getHeatlh();
 	this->_maxHitPoints = f.getHeatlh();
 	this->_energyPoints = s.getEnergy();
@@ -22,7 +21,7 @@ DiamondTrap::DiamondTrap(std::string name)
 	std::cout << "DiamondTrap: " << this->_name << " created!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &original)
+DiamondTrap::DiamondTrap(const DiamondTrap &original) : ClapTrap(original), ScavTrap(original), FragTrap(original)
 {
 	*this = original;
 	std::cout << "DiamondTrap:" << this->_name << " copy constructor called" << std::endl; 

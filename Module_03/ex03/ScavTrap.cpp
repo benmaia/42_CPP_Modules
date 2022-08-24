@@ -11,7 +11,7 @@ ScavTrap::ScavTrap()
 	std::cout << "ScavTrap: " << getName() << " default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	setType("ScavTrap");
 	setName(name);
@@ -21,7 +21,7 @@ ScavTrap::ScavTrap(std::string name)
 	std::cout << "ScavTrap: " << getName() << " created!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &original)
+ScavTrap::ScavTrap(const ScavTrap &original) : ClapTrap(original)
 {
 	setType(original._type);
 	setName(original._name);
