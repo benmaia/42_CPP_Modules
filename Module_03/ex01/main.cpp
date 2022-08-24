@@ -1,60 +1,39 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-	ClapTrap a;
-	ClapTrap b ("Alberto");
-	ClapTrap c ("Joao");
-	ClapTrap d (b);
-
-	
-std::cout << "\n" << std::endl;
-	std::cout << "a -> " << a.getName() << std::endl;
-	std::cout << "b -> " << b.getName() << std::endl;
-	std::cout << "c -> " << c.getName() << std::endl;
-	std::cout << "d -> " << d.getName() << std::endl;
-std::cout << std::endl;
-	std::cout << "===================== TEST ===================" << std::endl;
-std::cout << "\n" << std::endl;
-	b.setAttack(5);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	c.takeDamage(b.getAttack());
-	c.attack(b.getName());
-	b.takeDamage(c.getAttack());
-	c.beRepaired(6);
-	b.attack(c.getName());
-	b.beRepaired(10);
-	b.attack(c.getName());
-	b.beRepaired(10);
+	std::cout << "\n==================== CONSTRUCTORS ======================\n" << std::endl;
+	ScavTrap a("Sergio");
+	ScavTrap b (a);
+	ScavTrap d("Alberto");
+	ScavTrap c;
+	c = d;
+	std::cout << c.getName() << std::endl;
+	std::cout << a.getAttack() << std::endl;
+	std::cout << b.getAttack() << std::endl;
+	std::cout << c.getName() << " here " << std::endl;
+	std::cout << c.getHeatlh() << " here " << std::endl;
+	std::cout << c.getEnergy() << " here " << std::endl;
+	std::cout << c.getAttack() << " here " << std::endl;
+	std::cout << "\n==================== FUNCTIONS ======================\n" << std::endl;
+	std::cout << "Testing energy points + health recovery after to much heal" <<std::endl;
+	for (int i = 0; i <= b.getEnergy() + 2; i++)
+		c.beRepaired(1);
+	std::cout << "C life = " << c.getHeatlh() << std::endl;
+	std::cout << "\n" << std::endl;
+	while (d.getHeatlh() > 0)
+	{
+		a.attack(d.getName());
+		d.takeDamage(a.getAttack());
+		d.attack(a.getName());
+		if (d.getHeatlh() > 0)
+			a.takeDamage(d.getAttack());
+	}
+	std::cout << "Sergio hp = " << a.getHeatlh() << std::endl;
+	a.beRepaired(100);
+	std::cout << "Sergio hp = " << a.getHeatlh() << std::endl;
+	std::cout << std::endl;
+	a.guardGate();
+	std::cout << std::endl;
 	return 0;
 }
