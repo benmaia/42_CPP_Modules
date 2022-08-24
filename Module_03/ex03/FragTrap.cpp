@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap()
 {
 	setType("FragTrap");
 	setName("NULL");
@@ -10,7 +10,7 @@ FragTrap::FragTrap() : ClapTrap()
 	std::cout << "FragTrap: " << getName() << " default constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string name)
 {
 	setType("FragTrap");
 	setName(name);
@@ -20,9 +20,13 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	std::cout << "FragTrap: " << getName() << " created!" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &original) : ClapTrap(original)
+FragTrap::FragTrap(const FragTrap &original)
 {
-	setType("FragTrap");
+	setType(original._type);
+	setName(original._name);
+	setHealth(original._hitPoints);
+	setEnergy(original._energyPoints);
+	setAttack(original._attackPoints);
 	std::cout << "FragTrap:" << getName() << " copy constructor called" << std::endl; 
 }
 

@@ -1,36 +1,30 @@
 #include "DiamondTrap.hpp"
+#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 DiamondTrap::DiamondTrap()
 {
-	this->_name = "NULL";
-	ClapTrap::_name = (this->_name + "_clap_name");
-	this->_hitPoints = FragTrap::_hitPoints;
-	this->_maxHitPoints = FragTrap::_maxHitPoints;
-	this->_energyPoints = ScavTrap::_energyPoints;
-	this->_attackPoints = FragTrap::_attackPoints;
 	std::cout << "DiamondTrap: " << this->_name << " default constructor called" << std::endl;
+	return ;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
 {
+	FragTrap f(name);
+	ScavTrap s(name);
 	this->_name = name;
 	ClapTrap::_name = (name + "_clap_name");
-	this->_hitPoints = FragTrap::_hitPoints;
-	this->_maxHitPoints = FragTrap::_maxHitPoints;
-	this->_energyPoints = ScavTrap::_energyPoints;
-	this->_attackPoints = FragTrap::_attackPoints;
-	std::cout << FragTrap::_attackPoints << "   ================\n";
+	this->_hitPoints = f.getHeatlh();
+	this->_maxHitPoints = f.getHeatlh();
+	this->_energyPoints = s.getEnergy();
+	this->_attackPoints = f.getAttack();
 	std::cout << "DiamondTrap: " << this->_name << " created!" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &original)
 {
-	this->_name = original._name;
-	ClapTrap::_name = (this->_name  + "_clap_name");
-	this->_hitPoints = original._hitPoints;
-	this->_maxHitPoints = original._maxHitPoints;
-	this->_energyPoints = original._energyPoints;
-	this->_attackPoints = original._attackPoints;
+	*this = original;
 	std::cout << "DiamondTrap:" << this->_name << " copy constructor called" << std::endl; 
 }
 

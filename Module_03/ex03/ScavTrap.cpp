@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap()
 {
 	setType("ScavTrap");
 	setName("NULL");
@@ -11,7 +11,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	std::cout << "ScavTrap: " << getName() << " default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)
 {
 	setType("ScavTrap");
 	setName(name);
@@ -21,9 +21,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap: " << getName() << " created!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &original) : ClapTrap(original)
+ScavTrap::ScavTrap(const ScavTrap &original)
 {
-	setType("ScavTrap");
+	setType(original._type);
+	setName(original._name);
+	setHealth(original._hitPoints);
+	setEnergy(original._energyPoints);
+	setAttack(original._attackPoints);
 	std::cout << "ScavTrap:" << getName() << " copy constructor called" << std::endl; 
 }
 
