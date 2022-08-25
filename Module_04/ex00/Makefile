@@ -8,7 +8,7 @@ SRCS = $(wildcard *.cpp)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:

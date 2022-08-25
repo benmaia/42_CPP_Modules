@@ -28,12 +28,12 @@ void	Animal::setType(std::string type)
 	this->_type = type;
 }
 
-std::string	Animal::getType(void)
+std::string	Animal::getType(void)const
 {
 	return (this->_type);
 }
 
-void	Animal::makeSound()
+void	Animal::makeSound() const
 {
-	std::cout << getType() << " says:";
+	return ;
 }

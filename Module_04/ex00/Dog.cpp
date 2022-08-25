@@ -7,12 +7,6 @@ Dog::Dog() : Animal()
 	std::cout << getType() << " default constructor" << std::endl;
 }
 
-Dog::Dog(std::string name) : Animal()
-{
-	setType(name);
-	std::cout << getType() << " name constructor" << std::endl;
-}
-
 Dog::Dog(const Dog &original) : Animal(original)
 {
 	*this = original;
@@ -29,7 +23,7 @@ Dog::~Dog()
 	std::cout << getType() << " destructor called" << std::endl;
 }
 
-void	Dog::makeSound()
+void	Dog::makeSound()const
 {
-	Animal::makeSound();
+	std::cout << getType() << ": Ouf ouf" << std::endl;
 }
