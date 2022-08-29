@@ -19,6 +19,7 @@ WrongCat &WrongCat::operator=(const WrongCat &original)
 
 WrongCat::~WrongCat()
 {
+	std::cout << "out\n";
 	std::cout << getType() << " destructor called" << std::endl;
 }
 

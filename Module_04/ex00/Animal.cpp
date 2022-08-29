@@ -20,7 +20,7 @@ Animal	&Animal::operator=(const Animal &original)
 
 Animal::~Animal()
 {
-	std::cout << "Animal destrocter called " << std::endl;
+	std::cout << "Animal destructer called " << std::endl;
 }
 
 void	Animal::setType(std::string type)

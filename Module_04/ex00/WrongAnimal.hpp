@@ -15,7 +15,7 @@ class WrongAnimal
 		void	makeSound() const;
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal &original);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 		WrongAnimal &operator=(const WrongAnimal &original);
 };
 
