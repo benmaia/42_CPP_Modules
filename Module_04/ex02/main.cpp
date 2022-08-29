@@ -19,5 +19,6 @@ Dog basic;
 
 std::cout << "\n====================================\n";
 //Animal test;
+//Animal ola;
 return 0;
 }
