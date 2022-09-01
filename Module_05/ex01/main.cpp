@@ -4,15 +4,42 @@
 
 int main(void)
 {
-    Bureaucrat bur("Amelia", 150);
+    Bureaucrat bur("Ricardo", 40);
     std::cout << bur.getName() << std::endl;
     std::cout << bur.getGrade() << std::endl;
 
-    std::cout << "--------------------" << std::endl;
 
-    Bureaucrat other("Maria", 1);
-    std::cout << other.getName() << std::endl;
-    std::cout << other.getGrade() << std::endl;
+    std::cout << "----- EXCEPTIONS ---------------" << std::endl;
+	 try
+	 {
+		 Form a("a", 151, 151);
+	 }
+	 catch (std::exception &error)
+	 {
+		 std::cout << error.what() << std::endl;
+	 }
+
+	 try
+	 {
+	 	Form b("b", 0, 0);
+	 }
+	 catch (std::exception &error)
+	 {
+		 std::cout << error.what() << std::endl;
+	 }
+    std::cout << "----- WORKING ---------------" << std::endl;
+
+	 Form troll("troll", 60, 60);
+	 try
+	 {
+		std::cout << troll.getSigned() << std::endl;
+	 	troll.beSigned(bur);
+		std::cout << troll.getSigned() << std::endl;
+	 }
+	 catch (std::exception &error)
+	 {
+		std::cout << error.what() << std::endl;
+	 }
 
     std::cout << "-----TO LOW---------------" << std::endl;
 
@@ -27,5 +54,6 @@ int main(void)
 	 {
 		std::cout << error.what() << std::endl;
 	 }
+
     return (0);
 }
