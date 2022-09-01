@@ -1,4 +1,5 @@
 #include "PresidentPardonForm.hpp"
+#include "Form.hpp"
 
 PresidentPardonForm::PresidentPardonForm() : Form("PresidentPardonForm", 145, 137), _target("NULL")
 {
@@ -10,7 +11,7 @@ PresidentPardonForm::PresidentPardonForm(std::string target) : Form("PresidentPa
 	this->_target = target;
 }
 
-PresidentPardonForm::PresidentPardonForm(const PresidentPardonForm &original)
+PresidentPardonForm::PresidentPardonForm(const PresidentPardonForm &original) : Form(original)
 {
 	this->_target = original._target;
 	std::cout << "PresidentPardonForm Copy Constructor" << std::endl;

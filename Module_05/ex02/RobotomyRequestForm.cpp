@@ -11,7 +11,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyReq
 	this->_target = target;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &original)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &original) : Form(original)
 {
 	this->_target = original._target;
 	std::cout << "RobotomyRequestForm Copy Constructor" << std::endl;

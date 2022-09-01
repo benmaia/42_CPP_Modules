@@ -10,7 +10,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbe
 	this->_target = target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) : Form(original)
 {
 	this->_target = original._target;
 	std::cout << "ShrubberyCreationForm Copy Constructor" << std::endl;
