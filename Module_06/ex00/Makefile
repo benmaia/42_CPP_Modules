@@ -1,8 +1,8 @@
-NAME = scalar
+NAME = convert
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 SRCS = $(wildcard *.cpp)
 
