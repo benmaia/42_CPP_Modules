@@ -89,6 +89,8 @@ bool	convertExtra(std::string arg)
 	return (false);
 }
 
+#include "Convert.hpp"
+
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -96,28 +98,31 @@ int main(int argc, char **argv)
 		std::cout << "Please set only 1 argument" << std::endl;
 		exit (EXIT_FAILURE);
 	}
-	std::string arg(argv[argc - 1]);
-	if (convertExtra(arg))
-		return (0);
-	std::string::iterator i = arg.begin();
-	while (i != arg.end() && std::isdigit(*i)) i++;
-	if (i != arg.end())
-	{
-		if (arg.length() == 1)
-			convertChar(arg);
-		else if (*i == '.')
-		{
-			i++;
-			while (i != arg.end() && std::isdigit(*i)) i++;
-			if (*i == 'f')
-				convertFloat(arg);
-			else if (i == arg.end())
-				convertDouble(arg);
-		}
-		else
-			impossible();
-		return (0);
-	}
-	convertInt(arg);
+	//std::string arg(argv[argc - 1]);
+	//if (convertExtra(arg))
+		//return (0);
+	//std::string::iterator i = arg.begin();
+	//while (i != arg.end() && std::isdigit(*i)) i++;
+	//if (i != arg.end())
+	//{
+		//if (arg.length() == 1)
+			//convertChar(arg);
+		//else if (*i == '.')
+		//{
+			//i++;
+			//while (i != arg.end() && std::isdigit(*i)) i++;
+			//if (*i == 'f')
+				//convertFloat(arg);
+			//else if (i == arg.end())
+				//convertDouble(arg);
+		//}
+		//else
+			//impossible();
+		//return (0);
+	//}
+	//convertInt(arg);
+	Convert Test (argv[1]);
+	Test.convertArgToType();
+
 	return (0);
 }
