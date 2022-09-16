@@ -29,5 +29,9 @@ class Convert
 		Convert &operator=(const Convert &original);
 		~Convert();
 		void	convertArgToType(void);
+		void	convertChar(void);
+		void	convertInt(void);
+		void	convertFloat(void);
+		void	convertDouble(void);
 };
 

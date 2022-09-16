@@ -31,6 +31,8 @@ Convert &Convert::operator=(const Convert &original)
 	return (*this);
 	std::cout << " Convert Copy Assigment called" << std::endl;
 }
+
+#include <stdio.h>
 void	Convert::convertArgToType(void)
 {
 	char	*end;
@@ -42,7 +44,7 @@ void	Convert::convertArgToType(void)
 			if (_arg.length() == 1)
 			{
 				setChar(_arg.c_str()[0]);
-				std::cout << getChar() << std::endl;
+				convertChar();
 				return ;
 			}
 			else if (_arg[i] == '.')
@@ -50,21 +52,24 @@ void	Convert::convertArgToType(void)
 				if (!_arg[++i] || !std::isdigit(_arg.c_str()[i]))
 					return ;
 				j = i;
-				while (!std::isdigit(_arg.c_str()[i++])){}
-				if (_arg[i] == 'f' && _arg[i])
+				while (std::isdigit(_arg.c_str()[i++])){}
+				if (_arg[i - 1] == 'f' && !_arg[i])
 				{
 					setFloat(atof(_arg.c_str()));
-					std::cout << std::setprecision(1) << std::fixed << getFloat() << std::endl;
+					std::cout << std::setprecision(_arg.length() - j - 1) << std::fixed << getFloat() << "f" << std::endl;
 					return ;
 				}
-				else if (!_arg[i + 1])
+				else if (_arg[i - 2] && !_arg[i - 1])
 				{
 					setDouble(std::strtod(_arg.c_str(), &end));
-					std::cout << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+					std::cout << std::setprecision(_arg.length() - j) << std::fixed << getDouble() << std::endl;
 					return ;
 				}
 				else
+				{
 					std::cout << "Wrong parameter" << std::endl;
+					return ;
+				}
 			}
 		}
 	}
@@ -72,10 +77,21 @@ void	Convert::convertArgToType(void)
 				std::cout << getInt() << std::endl;
 }
 
-//void	Convert::convertTypeToAll(void)
-//{
-
-//}
+void	Convert::convertChar(void)
+{
+	if (getChar() < 0 && getChar() > 126)
+		std::cout << "char: impossible" << std::endl;
+	else if (!std::isprint(getChar()))
+		std::cout << "char: not displayable" << std::endl;
+	else
+		std::cout << "char: " << getChar() << std::endl;
+	setInt(static_cast<int>(getChar()));
+	std::cout << "int: " << getInt() << std::endl;
+	setFloat(static_cast<float>(getChar()));
+	std::cout << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	setDouble(static_cast<double>(getChar()));
+	std::cout << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+}
 
 void	Convert::setInt(int x)
 {
