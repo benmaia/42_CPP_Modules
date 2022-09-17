@@ -2,17 +2,17 @@
 
 Convert::Convert()
 {
-	std::cout << " Convert default Constructor called" << std::endl;
+	std::cout << "\n Convert default Constructor called" << std::endl;
 }
 
 Convert::Convert(std::string _arg) : _arg(_arg)
 {
-	std::cout << " Convert Constructor called" << std::endl;
+	std::cout << "\n Convert Constructor called" << std::endl;
 }
 
 Convert::~Convert()
 {
-	std::cout << " Convert Destructor called" << std::endl;
+	std::cout << " Convert Destructor called\n" << std::endl;
 }
 
 Convert::Convert(const Convert &original)
@@ -32,11 +32,13 @@ Convert &Convert::operator=(const Convert &original)
 	std::cout << " Convert Copy Assigment called" << std::endl;
 }
 
-#include <stdio.h>
 void	Convert::convertArgToType(void)
 {
 	char	*end;
 	int	j;
+	long long	in;
+	long double test;
+
 	for (size_t i = 0; i < _arg.length(); i++)
 	{
 		if (!std::isdigit(_arg.c_str()[i]))
@@ -55,42 +57,202 @@ void	Convert::convertArgToType(void)
 				while (std::isdigit(_arg.c_str()[i++])){}
 				if (_arg[i - 1] == 'f' && !_arg[i])
 				{
-					setFloat(atof(_arg.c_str()));
-					std::cout << std::setprecision(_arg.length() - j - 1) << std::fixed << getFloat() << "f" << std::endl;
-					return ;
+					test = atof(_arg.c_str());
+					if (test < FLT_MIN || test > FLT_MAX)
+					{
+						std::cout << "Float Overflow" << std::endl;
+						return ;
+					}
+					else
+					{
+						setFloat(test);
+						convertFloat(_arg.length() - j - 1);
+						return ;
+					}
 				}
 				else if (_arg[i - 2] && !_arg[i - 1])
 				{
-					setDouble(std::strtod(_arg.c_str(), &end));
-					std::cout << std::setprecision(_arg.length() - j) << std::fixed << getDouble() << std::endl;
-					return ;
-				}
-				else
-				{
-					std::cout << "Wrong parameter" << std::endl;
-					return ;
+					test = std::strtod(_arg.c_str(), &end);
+					if (test < DBL_MIN || test > DBL_MAX)
+					{
+						std::cout << "Double Overflow" << std::endl;
+						return ;
+					}
+					else
+					{
+						setDouble(std::strtod(_arg.c_str(), &end));
+						convertDouble(_arg.length() - j);
+						return ;
+					}
 				}
 			}
+			else if (!_arg.compare("nanf") || !_arg.compare("-inff") || !_arg.compare("+inff"))
+			{
+				setFloat(atof(_arg.c_str()));
+				convertSpecialFloat();
+				return ;
+			}
+			else if (!_arg.compare("nan") || !_arg.compare("-inf") || !_arg.compare("+inf"))
+			{
+				setDouble(atof(_arg.c_str()));
+				convertSpecialDouble();
+				return ;
+			}
+			else
+			{
+				std::cout << "Wrong parameter" << std::endl;
+				return ;
+			}
 		}
-	}
-	setInt(atoi( _arg.c_str() ));
-				std::cout << getInt() << std::endl;
+		}
+		in = atol(_arg.c_str());
+		if (in < INT_MIN || in > INT_MAX)
+		{
+			std::cout << "Int overflow" << std::endl;
+			return ;
+		}
+		else
+		{
+			setInt(in);
+			convertInt();
+		}
 }
 
 void	Convert::convertChar(void)
 {
+	std::cout << std::endl;
+	std::cout << "   Char convert" << std::endl;
+	std::cout << std::endl;
 	if (getChar() < 0 && getChar() > 126)
-		std::cout << "char: impossible" << std::endl;
+		std::cout << "   char: impossible" << std::endl;
 	else if (!std::isprint(getChar()))
-		std::cout << "char: not displayable" << std::endl;
+		std::cout << "   char: not displayable" << std::endl;
 	else
-		std::cout << "char: " << getChar() << std::endl;
+		std::cout << "   char: " << getChar() << std::endl;
 	setInt(static_cast<int>(getChar()));
-	std::cout << "int: " << getInt() << std::endl;
+	std::cout << "   int: " << getInt() << std::endl;
 	setFloat(static_cast<float>(getChar()));
-	std::cout << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<double>(getChar()));
-	std::cout << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	std::cout << std::endl;
+}
+
+void	Convert::convertInt(void)
+{
+	std::cout << std::endl;
+	std::cout << "   Int convert" << std::endl;
+	std::cout << std::endl;
+	if (getInt() < 0 || getInt() > 255)
+		std::cout << "   char: impossible" << std::endl;
+	else
+	{
+		if (!std::isprint(getInt()))
+			std::cout << "   char: not displayable" << std::endl;
+		else
+		{
+			setChar(static_cast<char>(getInt()));
+			std::cout << "   char: " << getChar() << std::endl;
+		}
+	}
+	std::cout << "   int: " << getInt() << std::endl;
+	setFloat(static_cast<float>(getInt()));
+	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	setDouble(static_cast<double>(getInt()));
+	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	std::cout << std::endl;
+}
+
+void	Convert::convertFloat(int x)
+{
+	std::cout << std::endl;
+	std::cout << "   Float convert" << std::endl;
+	std::cout << std::endl;
+	if (getFloat() < 0 || getFloat() > 255)
+		std::cout << "   char: impossible" << std::endl;
+	else
+	{
+		if (!std::isprint(getFloat()))
+			std::cout << "   char: not displayable" << std::endl;
+		else
+		{
+			setChar(static_cast<char>(getFloat()));
+			std::cout << "   char: " << getChar() << std::endl;
+		}
+	}
+	setInt(static_cast<int>(getFloat()));
+	std::cout << "   int: " << getInt() << std::endl;
+	std::cout << "   float: " << std::setprecision(x) << std::fixed << getFloat() << "f" << std::endl;
+	setDouble(static_cast<double>(getFloat()));
+	std::cout << "   double: " << std::setprecision(x) << std::fixed << getDouble() << std::endl;
+	std::cout << std::endl;
+}
+
+void	Convert::convertDouble(int x)
+{
+	std::cout << std::endl;
+	std::cout << "   Double convert" << std::endl;
+	std::cout << std::endl;
+	if (getDouble() < 0 || getDouble() > 255)
+		std::cout << "   char: impossible" << std::endl;
+	else
+	{
+		if (!std::isprint(getDouble()))
+			std::cout << "   char: not displayable" << std::endl;
+		else
+		{
+			setChar(static_cast<char>(getDouble()));
+			std::cout << "   char: " << getChar() << std::endl;
+		}
+	}
+	setInt(static_cast<int>(getDouble()));
+	std::cout << "   int: " << getInt() << std::endl;
+	setFloat(static_cast<float>(getDouble()));
+	std::cout << "   float: " << std::setprecision(x) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "   double: " << std::setprecision(x) << std::fixed << getDouble() << std::endl;
+	std::cout << std::endl;
+}
+
+void	Convert::convertSpecialFloat(void)
+{
+	std::cout << std::endl;
+	std::cout << "   Float Special convert" << std::endl;
+	std::cout << std::endl;
+	if (!std::isprint(getChar()))
+		std::cout << "   char: impossible" << std::endl;
+	else
+	{
+		setChar(static_cast<char>(getFloat()));
+		std::cout << "   char: " << getChar() << std::endl;
+	}
+	setInt(static_cast<int>(getFloat()));
+	std::cout << "   int: " << getInt() << std::endl;
+	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	setDouble(static_cast<float>(getFloat()));
+	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	//https://stackoverflow.com/questions/38795544/is-casting-of-infinity-to-integer-undefined
+	std::cout << std::endl;
+}
+
+void	Convert::convertSpecialDouble(void)
+{
+	std::cout << std::endl;
+	std::cout << "   Double Special convert" << std::endl;
+	std::cout << std::endl;
+	if (!std::isprint(getChar()))
+		std::cout << "   char: impossible" << std::endl;
+	else
+	{
+		setChar(static_cast<char>(getDouble()));
+		std::cout << "   char: " << getChar() << std::endl;
+	}
+	setInt(static_cast<int>(getDouble()));
+	std::cout << "   int: " << getInt() << std::endl;
+	setFloat(static_cast<float>(getDouble()));
+	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	//https://stackoverflow.com/questions/38795544/is-casting-of-infinity-to-integer-undefined
+	std::cout << std::endl;
 }
 
 void	Convert::setInt(int x)

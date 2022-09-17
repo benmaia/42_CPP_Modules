@@ -2,6 +2,8 @@
 #include <string>
 #include <stdlib.h>
 #include <iomanip>
+#include <limits.h>
+#include <float.h>
 
 #pragma once
 
@@ -31,7 +33,9 @@ class Convert
 		void	convertArgToType(void);
 		void	convertChar(void);
 		void	convertInt(void);
-		void	convertFloat(void);
-		void	convertDouble(void);
+		void	convertFloat(int x);
+		void	convertSpecialFloat(void);
+		void	convertDouble(int x);
+		void	convertSpecialDouble(void);
 };
 
