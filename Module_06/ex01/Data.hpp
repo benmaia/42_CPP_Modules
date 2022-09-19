@@ -4,17 +4,11 @@
 #include <iostream>
 #include <string>
 
-class Data
+struct	Data
 {
-	private:
-		std::string _data;
-
-	public:
-		Data();
-		Data(std::string data);
-		Data(const Data &original);
-		~Data();
-		Data &operator=(const Data &original);
+	int value;
+	int x;
+	int y;
 };
 
 std::ostream &operator<<(std::ostream &stream, Data &data);
