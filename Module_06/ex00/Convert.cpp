@@ -226,7 +226,8 @@ void	Convert::convertSpecialFloat(void)
 		std::cout << "   char: " << getChar() << std::endl;
 	}
 	setInt(static_cast<int>(getFloat()));
-	std::cout << "   int: " << getInt() << std::endl;
+	//std::cout << "   int: " << getInt() << std::endl;
+	std::cout << "   int: impossible" << std::endl;
 	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<float>(getFloat()));
 	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
@@ -247,7 +248,8 @@ void	Convert::convertSpecialDouble(void)
 		std::cout << "   char: " << getChar() << std::endl;
 	}
 	setInt(static_cast<int>(getDouble()));
-	std::cout << "   int: " << getInt() << std::endl;
+	//std::cout << "   int: " << getInt() << std::endl;
+	std::cout << "   int: impossible" << std::endl;
 	setFloat(static_cast<float>(getDouble()));
 	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
