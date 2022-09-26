@@ -102,6 +102,8 @@ void	Convert::convertArgToType(void)
 				convertSpecialDouble();
 				return ;
 			}
+			else if (_arg[i] == '-')
+				i++;
 			else
 			{
 				std::cout << "Wrong parameter" << std::endl;

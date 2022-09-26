@@ -1,5 +1,6 @@
 #include "Base.hpp"
 #include <cstdlib>
+#include <exception>
 #include <time.h>
 
 Base::~Base()
@@ -26,15 +27,31 @@ Base* generate(void)
 
 void	identify(Base* p)
 {
-	A* a = dynamic_cast<A*>(p);
-	B* b = dynamic_cast<B*>(p);
-	C* c = dynamic_cast<C*>(p);
-	if (a)
-		std::cout << "Got A\n";
-	else if (b)
-		std::cout << "Got B\n";
-	else if (c)
-		std::cout << "Got C\n";
+	try
+	{
+		A* a = dynamic_cast<A*>(p);
+		if (a)
+			std::cout << "Got A\n";
+	}
+	catch
+	( std::exception& error ) {}
+
+	try
+	{
+		B* b = dynamic_cast<B*>(p);
+		if (b)
+			std::cout << "Got B\n";
+	}
+	catch
+	( std::exception& error ) {}
+	try
+	{
+		C* c = dynamic_cast<C*>(p);
+		if (c)
+			std::cout << "Got C\n";
+	}
+	catch
+	( std::exception& error ) {}
 }
 
 void	identify(Base& p)

@@ -13,6 +13,9 @@ int main()
 	std::cout << "\nDeserialize\n\n";
 	Data *o = deserialize(t);
 	std::cout << *o << std::endl;
+	if (&d == o)
+		std::cout << "here\n";
+	std::cout << &d << "\n" << &o << "\n";
 	std::cout << "\n";
 	return 0;
 }
