@@ -27,7 +27,11 @@ Convert::Convert(const Convert &original)
 
 Convert &Convert::operator=(const Convert &original)
 {
-	*this = original;
+	this->_arg = original._arg;
+	this->_character = original._character;
+	this->_decimal = original._decimal;
+	this->_fdecimal = original._fdecimal;
+	this->_integer = original._integer;
 	return (*this);
 	std::cout << " Convert Copy Assigment called" << std::endl;
 }
