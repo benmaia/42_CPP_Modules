@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 
+#define MAX_VAL 750
 template <class T>
 class Array
 {
@@ -13,8 +14,8 @@ class Array
 	public:
 		Array()
 		{
-			arr = NULL;
-			len = 0;
+			arr = new T[MAX_VAL];
+			len = MAX_VAL;
 		};
 		Array(unsigned int n)
 		{
@@ -37,16 +38,24 @@ class Array
 			return *this;
 		}
 
-		Array& operator[](int index)
+		T& operator[](int index)
 		{
-			if (index >= len || index < 0)
+			if (index >= (int)len || index < 0)
 				throw(std::exception());
 			else
 				return (arr[index]);
 		}
 
+		
+
 		size_t	size(void)
 		{
 			return len;
+		}
+
+		~Array()
+		{
+			//if (!arr)
+				//delete[] arr;
 		}
 };
