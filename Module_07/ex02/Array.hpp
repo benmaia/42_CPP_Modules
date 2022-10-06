@@ -14,8 +14,8 @@ class Array
 	public:
 		Array()
 		{
-			arr = new T[MAX_VAL];
-			len = MAX_VAL;
+			arr = new T[0];
+			len = 0;
 		};
 		Array(unsigned int n)
 		{
@@ -24,7 +24,9 @@ class Array
 		};
 		Array(const Array& other)
 		{
-			this->arr = other.arr;
+			arr = new T[other.len];
+			for (size_t i = 0; i < other.len; i++)
+				this->arr[i] = other.arr[i];
 			this->len = other.len;
 		}
 		Array& operator=(const Array& other)
@@ -55,7 +57,6 @@ class Array
 
 		~Array()
 		{
-			//if (!arr)
-				//delete[] arr;
+			delete[] arr;
 		}
 };

@@ -2,7 +2,7 @@ NAME = Array
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 SRCS = $(wildcard *.cpp)
 

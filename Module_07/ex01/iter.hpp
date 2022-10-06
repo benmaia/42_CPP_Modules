@@ -4,7 +4,7 @@
 #include <string>
 
 template <class T>
-void	iter(T* a, size_t b, void (*f)(T& c))
+void	iter(T* a, size_t b, void (*f)(const T& c))
 {
 	if (!a)
 		return ;
