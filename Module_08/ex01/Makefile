@@ -1,4 +1,4 @@
-NAME = Easy
+NAME = Span
 
 CC = c++
 
