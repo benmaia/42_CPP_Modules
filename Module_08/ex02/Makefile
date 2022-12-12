@@ -1,4 +1,4 @@
-NAME = templates
+NAME = Mutant
 
 CC = c++
 

@@ -3,7 +3,7 @@
 #include <map>
 
 template <typename T>
-std::map<int, int>::iterator easyfind(T &t, int x)
+typename T::iterator easyfind(T &t, int x)
 {
 	return (t.find(x));
 }

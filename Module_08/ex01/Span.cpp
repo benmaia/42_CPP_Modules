@@ -54,4 +54,17 @@ unsigned int	Span::longestSpan()
 		throw (std::exception());
 }
 
+Span::Span(const Span &span)
+{
+	*this = span;
+}
+
+Span& Span::operator=(const Span &span)
+{
+	size = span.size;
+	vec = span.vec;
+	counter = span.counter;
+	return *this;
+}
+
 Span::~Span(){};
